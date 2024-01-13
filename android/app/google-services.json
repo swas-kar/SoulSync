@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1012599413510",
+    "project_id": "my-soul-sync",
+    "storage_bucket": "my-soul-sync.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012599413510:android:581836a572f54da0235c87",
+        "android_client_info": {
+          "package_name": "com.example.my_soul_sync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvNxlcOfOUfKry_eoNbhKllEXZ2mtGM14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
