@@ -40,8 +40,12 @@ flutter run
 
 # Screenshots
 
-<!-- ![SoulSync Screenshot 1](lib\assets\screenshots\WhatsApp Image 2024-01-14 at 4.18.03 PM (1).jpeg)
-![SoulSync Screenshot 2](https://github.com/your-username/your-repository/raw/main/screenshots/screenshot2.png) -->
+![SoulSync Screenshot 1](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM%20(1).jpeg)
+![SoulSync Screenshot 2](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM.jpeg)
+![SoulSync Screenshot 3](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM%20(1).jpeg)
+![SoulSync Screenshot 4](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM.jpeg)
+![SoulSync Screenshot 5](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM%20(1).jpeg)
+![SoulSync Screenshot 6](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg)
 
 
 
