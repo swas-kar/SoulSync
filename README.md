@@ -40,13 +40,17 @@ flutter run
 
 ## Screenshots
 
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
-<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM%20(1).jpeg">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM.jpeg" width="250" alt="SoulSync Screenshot 2">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM%20(1).jpeg" width="250" alt="SoulSync Screenshot 3">
+</div>
 
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM.jpeg" width="250" alt="SoulSync Screenshot 4">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM%20(1).jpeg" width="250" alt="SoulSync Screenshot 5">
+  <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg" width="250" alt="SoulSync Screenshot 6">
+</div>
 
 License
 This project is licensed under the MIT License.
