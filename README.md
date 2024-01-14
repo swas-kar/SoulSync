@@ -40,6 +40,10 @@ flutter run
 
 # Screenshots
 
+<!-- ![SoulSync Screenshot 1](lib\assets\screenshots\WhatsApp Image 2024-01-14 at 4.18.03 PM (1).jpeg)
+![SoulSync Screenshot 2](https://github.com/your-username/your-repository/raw/main/screenshots/screenshot2.png) -->
+
+
 
 License
 This project is licensed under the MIT License.
