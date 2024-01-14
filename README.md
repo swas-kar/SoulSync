@@ -38,15 +38,14 @@ flutter run
 2.Chronicle your serenity – Create a new journal entry or revisit moments by selecting a date.
 3.Witness the transformation – Write, save, and explore the magic of mood detection.
 
-# Screenshots
+## Screenshots
 
-![SoulSync Screenshot 1](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM%20(1).jpeg)
-![SoulSync Screenshot 2](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM.jpeg)
-![SoulSync Screenshot 3](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM%20(1).jpeg)
-![SoulSync Screenshot 4](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM.jpeg)
-![SoulSync Screenshot 5](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM%20(1).jpeg)
-![SoulSync Screenshot 6](https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg)
-
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.03%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.04%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM%20(1).jpeg" width="400" alt="SoulSync Screenshot 1">
+<img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg" width="400" alt="SoulSync Screenshot 1">
 
 
 License
