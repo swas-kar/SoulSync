@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                     OptionBox(
-                      label: 'Blogs',
+                      label: 'Chat Bot',
                       onTap: () {
                       
                       },
