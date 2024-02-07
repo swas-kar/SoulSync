@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'home_page.dart';
+import 'screens/home_page.dart';
+import 'screens/logins/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'screens/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Color.fromARGB(255, 199, 73, 115),
+      statusBarColor: Color.fromARGB(255, 217, 207, 211),
       statusBarIconBrightness: Brightness.dark,
     ),
   );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const DiaryApp());
+  runApp(MyApp());
 }
 
-class DiaryApp extends StatelessWidget {
-  const DiaryApp({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 225, 176, 192),
+        scaffoldBackgroundColor: Color.fromARGB(255, 59, 20, 51),
       ),
-      home: const HomePage(),
+      home: LoginPage(),
+      routes: {
+        '/login': (context) => LoginPage(), 
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }

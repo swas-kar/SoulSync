@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import '../screens/journal/constants.dart';
 
 class FrontView extends StatelessWidget {
   final int monthIndex;

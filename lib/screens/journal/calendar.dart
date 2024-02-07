@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import './widgets/front_view.dart';
-import './widgets/back_view.dart';
-import './widgets/action_buttons.dart';
+import '../../widgets/front_view.dart';
+import '../../widgets/back_view.dart';
+import '../../widgets/action_buttons.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);

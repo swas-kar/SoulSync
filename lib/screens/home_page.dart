@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'calendar.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'journal/calendar.dart';
+import '../services/firebase_auth_methods.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,10 +22,10 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               AppBar(
-                title: const Text("Solitude"),
+                title: const Text("SoulSync"),
                 centerTitle: true,
                 elevation: 0,
-                backgroundColor: Colors.transparent,
+                backgroundColor: const Color.fromARGB(0, 0, 0, 0),
               ),
               const SizedBox(height: 30),
               Center(
@@ -51,6 +53,7 @@ class HomePage extends StatelessWidget {
                     OptionBox(
                       label: 'Meditate',
                       onTap: () {
+                        // Handle 'Meditate' button tap
                       },
                     ),
                     OptionBox(
@@ -67,19 +70,24 @@ class HomePage extends StatelessWidget {
                     OptionBox(
                       label: 'Insights',
                       onTap: () {
-                      
+                        // Handle 'Insights' button tap
                       },
                     ),
                     OptionBox(
                       label: 'Chat Bot',
                       onTap: () {
-                      
+                        // Handle 'Chat Bot' button tap
                       },
                     ),
                   ],
                 ),
               ),
             ],
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: LogoutButton(),
           ),
         ],
       ),
@@ -126,5 +134,41 @@ class OptionBox extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class LogoutButton extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    // Increase the opacity by adjusting the alpha value (0-255)
+    Color buttonColor = Color.fromARGB(200, 0, 0, 0);
+
+    return ElevatedButton(
+      onPressed: () {
+        _logout(context);
+      },
+      style: ElevatedButton.styleFrom(
+        primary: buttonColor,
+        shadowColor: Colors.transparent,
+      ),
+      child: Text(
+        'Sign Out',
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  Future<void> _logout(BuildContext context) async {
+    try {
+      await _auth.signOut();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', false); // Update login status to false
+      Navigator.pushReplacementNamed(context, '/login');
+    } catch (e) {
+      // Handle sign-out error
+      print(e.toString());
+    }
   }
 }

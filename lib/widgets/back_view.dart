@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import '../screens/journal/constants.dart';
 
-import '../journal_entry_screen.dart';
+import '../screens/journal/journal_entry_screen.dart';
 
 class BackView extends StatefulWidget {
   final int monthIndex;

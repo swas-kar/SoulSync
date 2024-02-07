@@ -12,7 +12,20 @@
           "package_name": "com.example.my_soul_sync"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1012599413510-pklkj2druokqdv1ap6nbr2045vamvfc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_soul_sync",
+            "certificate_hash": "fd8f67b66c9a635d7767393d7afd90cbd9a2a08a"
+          }
+        },
+        {
+          "client_id": "1012599413510-1tckoao31te720kugjuuggrtc62o1ht5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDvNxlcOfOUfKry_eoNbhKllEXZ2mtGM14"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012599413510-1tckoao31te720kugjuuggrtc62o1ht5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1012599413510-3o67s7vnuff4qnd6cqv5i3hden54nj2m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mySoulSync"
+              }
+            }
+          ]
         }
       }
     }

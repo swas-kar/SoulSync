@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../constants.dart';
+import 'constants.dart';
 import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
