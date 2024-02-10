@@ -52,5 +52,6 @@ flutter run
   <img src="https://github.com/swas-kar/SoulSync/blob/main/lib/assets/screenshots/WhatsApp%20Image%202024-01-14%20at%204.18.10%20PM.jpeg" width="250" alt="SoulSync Screenshot 6">
 </div>
 
+
 License
 This project is licensed under the MIT License.

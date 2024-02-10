@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_soul_sync/screens/bot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'journal/calendar.dart';
 import '../services/firebase_auth_methods.dart';
@@ -22,10 +23,11 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               AppBar(
-                title: const Text("SoulSync"),
+                title: const Text(
+                  "SoulSync"),
                 centerTitle: true,
                 elevation: 0,
-                backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                backgroundColor: Color.fromARGB(0, 246, 241, 241),
               ),
               const SizedBox(height: 30),
               Center(
@@ -74,9 +76,14 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                     OptionBox(
-                      label: 'Chat Bot',
+                      label: 'SoulSync Buddy',
                       onTap: () {
-                        // Handle 'Chat Bot' button tap
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChatScreen(),
+                          ),
+                        );
                       },
                     ),
                   ],
