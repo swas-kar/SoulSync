@@ -23,6 +23,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
   TextEditingController _journalController = TextEditingController();
   String _currentPrompt = '';
   String? _emotionScore;
+  int? emotionScore;
 
   @override
   void initState() {
@@ -120,7 +121,23 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
       return '';
     }
   }
-
+  double mapSentimentValueToScore(String sentimentValue) {
+    // You may customize this mapping based on your sentiment value interpretation
+    if (sentimentValue == 'The response submitted is very positive.') {
+      return 1.0;
+    } else if (sentimentValue == 'The response submitted is very negative.') {
+      return -1.0;
+    }
+    else if (sentimentValue == 'The response submitted is mostly positive.'){
+      return 0.5;
+    }
+    else if (sentimentValue == 'The response submitted is mostly positive.'){
+      return -0.5;
+    }
+     else {
+      return 0.0001; 
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,6 +195,11 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                 onPressed: () async {
                   try {
                     String journalEntry = _journalController.text;
+                    String response = await _analyzeSentiments(journalEntry);
+                    double emotionScore= mapSentimentValueToScore(response);
+                    setState(() {
+                      _emotionScore=response;
+                    });
                     QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
                         .collection('journal_entries')
                         .where('monthIndex', isEqualTo: widget.monthIndex)
@@ -190,6 +212,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                           .doc(querySnapshot.docs.first.id)
                           .update({
                         'entry': journalEntry,
+                        'sentimentScore': emotionScore,
                         'timestamp': FieldValue.serverTimestamp(),
                       });
                     } else {
@@ -198,6 +221,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                         'monthIndex': widget.monthIndex,
                         'selectedDay': widget.selectedDay,
                         'entry': journalEntry,
+                        'sentimentScore': emotionScore,
                         'timestamp': FieldValue.serverTimestamp(),
                       });
                     }
