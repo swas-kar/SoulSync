@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
           bool isLoggedIn = snapshot.data ?? false;
 
           if (isLoggedIn) {
-            return HomePage(); // Navigate to Home Page if already logged in
+            return const HomePage(); // Navigate to Home Page if already logged in
           }
 
           return Scaffold(
@@ -115,15 +115,15 @@ class LoginPage extends StatelessWidget {
                             onTap: () =>
                                 _authMethods.signInWithGoogle(context),
                             child:
-                                SquareTile(imagePath: 'lib/assets/google.jpeg'),
+                                const SquareTile(imagePath: 'lib/assets/google.jpeg'),
                           ),
-                          SizedBox(width: 25),
+                          const SizedBox(width: 25),
                         ],
                       ),
                       const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () => skipSignIn(context),
-                        child: Text(
+                        child: const Text(
                           'Skip Sign In',
                           style: TextStyle(
                             color: Colors.blue,
@@ -134,7 +134,7 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () => navigateToRegistration(context),
-                        child: Text(
+                        child: const Text(
                           'Not a member? Register now',
                           style: TextStyle(
                             color: Color.fromARGB(255, 50, 29, 47),
@@ -149,7 +149,7 @@ class LoginPage extends StatelessWidget {
             ),
           );
         } else {
-          return CircularProgressIndicator(); // Loading indicator while checking login status
+          return const CircularProgressIndicator(); // Loading indicator while checking login status
         }
       },
     );
@@ -182,7 +182,7 @@ class LoginPage extends StatelessWidget {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => const HomePage(),
           ),
         );
       } else {
@@ -201,7 +201,7 @@ class LoginPage extends StatelessWidget {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => HomePage(),
+        builder: (context) => const HomePage(),
       ),
     );
   }
@@ -210,7 +210,7 @@ class LoginPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => RegistrationPage(),
+        builder: (context) => const RegistrationPage(),
       ),
     );
   }

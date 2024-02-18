@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:my_soul_sync/screens/bot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'journal/calendar.dart';
-import '../services/firebase_auth_methods.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class HomePage extends StatelessWidget {
                   "SoulSync"),
                 centerTitle: true,
                 elevation: 0,
-                backgroundColor: Color.fromARGB(0, 246, 241, 241),
+                backgroundColor: const Color.fromARGB(0, 246, 241, 241),
               ),
               const SizedBox(height: 30),
               Center(
@@ -91,7 +90,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(
+           Positioned(
             bottom: 10,
             right: 10,
             child: LogoutButton(),
@@ -119,7 +118,7 @@ class OptionBox extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 50, 29, 47),
+          backgroundColor: const Color.fromARGB(255, 50, 29, 47),
           elevation: 8.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -131,7 +130,7 @@ class OptionBox extends StatelessWidget {
           child: Center(
             child: Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
@@ -147,20 +146,22 @@ class OptionBox extends StatelessWidget {
 class LogoutButton extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  LogoutButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Increase the opacity by adjusting the alpha value (0-255)
-    Color buttonColor = Color.fromARGB(200, 0, 0, 0);
+    Color buttonColor = const Color.fromARGB(200, 0, 0, 0);
 
     return ElevatedButton(
       onPressed: () {
         _logout(context);
       },
       style: ElevatedButton.styleFrom(
-        primary: buttonColor,
+        backgroundColor: buttonColor,
         shadowColor: Colors.transparent,
       ),
-      child: Text(
+      child: const Text(
         'Sign Out',
         style: TextStyle(color: Colors.white),
       ),

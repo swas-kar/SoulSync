@@ -4,7 +4,7 @@ import 'constants.dart';
 import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../screens/logins/registration.dart'
+
 class JournalEntryScreen extends StatefulWidget {
   final int monthIndex;
   final int? selectedDay;
@@ -20,7 +20,7 @@ class JournalEntryScreen extends StatefulWidget {
 }
 
 class _JournalEntryScreenState extends State<JournalEntryScreen> {
-  TextEditingController _journalController = TextEditingController();
+  final TextEditingController _journalController = TextEditingController();
   String _currentPrompt = '';
   String? _emotionScore;
   int? emotionScore;
@@ -173,7 +173,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                       _journalController.text = _currentPrompt;
                     });
                   },
-                  child: Text('Generate Prompt'),
+                  child: const Text('Generate Prompt'),
                 ),
               ),
               
@@ -183,7 +183,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                   child: TextField(
                     controller: _journalController,
                     maxLines: null, 
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Write your journal entry...',
                     ),
@@ -227,13 +227,13 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                     }
 
                     
-                    String response = await _analyzeSentiments(journalEntry);
+                    
 
                     
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Sentiment Analysis: $response'),
-                        duration: Duration(seconds: 2),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
 
@@ -243,7 +243,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                     print('Error: $error');
                   }
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
               
               if (_emotionScore != null)
@@ -251,7 +251,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Text(
                     'Overall feelings: $_emotionScore',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
                     ),

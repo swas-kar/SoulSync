@@ -5,6 +5,8 @@ import '../../widgets/my_button.dart';
 import '../../widgets/my_textfield.dart';
 
 class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
@@ -42,7 +44,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Register'),
+        title: const Text('Register'),
       ),
       body: SafeArea(
         child: Center(
@@ -80,7 +82,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       errorMessage,
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     ),
                   ),
 
@@ -91,7 +93,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     Navigator.pop(
                         context); // Navigate back to the login page
                   },
-                  child: Text(
+                  child: const Text(
                     'Back to Login',
                     style: TextStyle(
                       color: Colors.blue,

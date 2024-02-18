@@ -15,7 +15,7 @@ class FrontView extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 50, 29, 47),
+          color: const Color.fromARGB(255, 50, 29, 47),
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: const [
             BoxShadow(color: Colors.black26, blurRadius: 8.0),

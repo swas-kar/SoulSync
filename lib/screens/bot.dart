@@ -36,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text('SoulSync Buddy'),
         actions: [
           IconButton(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/home');
             },

@@ -54,7 +54,7 @@ class _BackViewState extends State<BackView> {
                 // dates
                 GridView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: months[widget.monthIndex]!.values.toList()[0],
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 7,
@@ -101,7 +101,7 @@ class _BackViewState extends State<BackView> {
                   },
                 ),
                 if (selectedDay != null)
-                  Container(
+                  SizedBox(
                     height: 100.0,
                     child: GestureDetector(
                       onTap: () {

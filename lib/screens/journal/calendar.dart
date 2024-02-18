@@ -58,7 +58,7 @@ class _CalendarPageState extends State<CalendarPage> with TickerProviderStateMix
                   actions: [
 
                     IconButton(
-                      icon: Icon(Icons.home),
+                      icon: const Icon(Icons.home),
                       onPressed: () {
                         Navigator.popUntil(context, ModalRoute.withName('/'));
                       },

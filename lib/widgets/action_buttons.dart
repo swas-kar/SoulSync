@@ -28,7 +28,7 @@ class _ActionButtonsState extends State<ActionButtons> {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3), 
+                  offset: const Offset(0, 3), 
                 ),
               ],
             ),
@@ -43,17 +43,17 @@ class _ActionButtonsState extends State<ActionButtons> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Today',
                         style: TextStyle(
-                          color: const Color.fromARGB(255, 88, 65, 65),
+                          color: Color.fromARGB(255, 88, 65, 65),
                           fontWeight: FontWeight.w500,
                           fontSize: 16.0, 
                         ),
                       ),
                       Text(
                         '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14.0, 
                         ),
