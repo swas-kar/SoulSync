@@ -131,7 +131,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
     else if (sentimentValue == 'The response submitted is mostly positive.'){
       return 0.5;
     }
-    else if (sentimentValue == 'The response submitted is mostly positive.'){
+    else if (sentimentValue == 'The response submitted is mostly negative.'){
       return -0.5;
     }
      else {

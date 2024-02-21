@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_soul_sync/screens/bot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'journal/calendar.dart';
+import 'graph.dart';
+import 'meditation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -54,7 +56,12 @@ class HomePage extends StatelessWidget {
                     OptionBox(
                       label: 'Meditate',
                       onTap: () {
-                        // Handle 'Meditate' button tap
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MeditationPage(),
+                          ),
+                        );
                       },
                     ),
                     OptionBox(
@@ -71,7 +78,12 @@ class HomePage extends StatelessWidget {
                     OptionBox(
                       label: 'Insights',
                       onTap: () {
-                        // Handle 'Insights' button tap
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const GraphPage(),
+                          ),
+                        );
                       },
                     ),
                     OptionBox(

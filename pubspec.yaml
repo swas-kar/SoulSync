@@ -44,6 +44,7 @@ dependencies:
   provider: ^6.1.1
   dialog_flowtter: ^0.3.3
   dash_chat_2: ^0.0.20
+  fl_chart: ^0.40.0
 
 dev_dependencies:
   flutter_test:
