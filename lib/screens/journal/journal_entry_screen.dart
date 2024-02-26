@@ -81,7 +81,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
 
   Future<String> _analyzeSentiments(String text) async {
   try{
-    const  String apiKey = 'AIzaSyDT8KFmc5QHXNdbHIpvQjzNlY_G1zs64MU'; // Replace with your Google Cloud API key
+    const  String apiKey = 'AIzaSyDT8KFmc5QHXNdbHIpvQjzNlY_G1zs64MU'; 
     const String apiUrl = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key=$apiKey';
 
     final Map<String, dynamic> requestBody = {
