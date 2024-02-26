@@ -80,64 +80,81 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
   }
 
   Future<String> _analyzeSentiments(String text) async {
-    try {
-      var request = http.MultipartRequest('POST', Uri.parse("https://api.meaningcloud.com/sentiment-2.1"));
-      request.fields.addAll({
-        'key': 'bcf84fa1e219734bf743bdd3ef09fefc',
-        'txt': text,
-        'lang': 'en',
-      });
+  try{
+    const  String apiKey = 'AIzaSyDT8KFmc5QHXNdbHIpvQjzNlY_G1zs64MU'; // Replace with your Google Cloud API key
+    const String apiUrl = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key=$apiKey';
 
-      var response = await request.send();
+    final Map<String, dynamic> requestBody = {
+      'document': {
+        'type': 'PLAIN_TEXT',
+        'content': text,
+      },
+    };
 
-      if (response.statusCode == 200) {
-        final String rawResponse = await http.Response.fromStream(response).then((value) => value.body);
+    final http.Response response = await http.post(
+      Uri.parse(apiUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(requestBody),
+      
+    );
+    if (response.statusCode == 200){
+      final Map<String, dynamic> responseJson = json.decode(response.body);
+      final double score = responseJson['documentSentiment']['score'].toDouble();
+      final String scoreTag = getScoreTag(score);
 
-        final Map<String, dynamic> responseJson = json.decode(rawResponse);
-        String scoreTag = responseJson['score_tag'];
-
-        String result = '';
-        if (scoreTag == 'P') {
-          result = 'The response submitted is mostly positive.';
-        } else if (scoreTag == 'N') {
-          result = 'The response submitted is mostly negative.';
-        } else if (scoreTag == 'NEU') {
-          result = 'The response submitted is neutral, with both highs and lows.';
-        } else if (scoreTag == 'P+') {
-          result = 'The response submitted is very positive.';
-        } else if (scoreTag == 'N+') {
-          result = 'The response submitted is very negative.';
-        } else {
-          result = 'Please write a little bit more about your feelings.';
-        }
-
-        return result;
-      } else {
-        print('MeaningCloud API Error: ${response.reasonPhrase}');
-        return '';
-      }
-    } catch (error) {
-      print('Error analyzing sentiment: $error');
-      return '';
+      return scoreTag;
+    } else {
+      throw Exception('Failed to analyze sentiments. Status code: ${response.statusCode}');
     }
+  } catch (error) {
+    throw Exception('Error analyzing sentiments: $error');
   }
-  double mapSentimentValueToScore(String sentimentValue) {
-    // You may customize this mapping based on your sentiment value interpretation
-    if (sentimentValue == 'The response submitted is very positive.') {
+}
+
+String getScoreTag(double score) {
+  if (score >= 0.25 && score <=0.5) {
+    return 'The entry made is mostly positive.';
+  } 
+  else if (score >0.5){
+    return 'The entry made is very positive.';
+  }
+  else if (score <= -0.25 && score >=-.5) {
+    return 'NEGATIVE';
+  } 
+  else if(score < -0.5){
+    return 'The entry made is very negative.';
+  }
+  else if(score<0.25 && score>-0.25){
+    return 'The entry made is mostly neutral, with positive and negative aspects.';
+  }
+  else {
+    return 'Try writing more about your feelings.';
+  }
+}
+double score(String txt){
+  try{
+    if (txt == 'The entry made is very positive.'){
       return 1.0;
-    } else if (sentimentValue == 'The response submitted is very negative.') {
+    }
+    else if(txt == 'The entry made is very negative.'){
       return -1.0;
     }
-    else if (sentimentValue == 'The response submitted is mostly positive.'){
-      return 0.5;
+    else if(txt == 'The entry made is mostly positive.'){
+     return 0.5;
     }
-    else if (sentimentValue == 'The response submitted is mostly negative.'){
+    else if(txt == 'The entry made is mostly negative.'){
       return -0.5;
     }
-     else {
-      return 0.0001; 
+    else{
+      return 0.0001;
     }
   }
+  catch(error){
+    throw Exception('$error');
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,8 +179,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
             ),
           ),
           Column(
-            children: [
-              
+            children: [      
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
@@ -176,7 +192,6 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                   child: const Text('Generate Prompt'),
                 ),
               ),
-              
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -196,7 +211,7 @@ class _JournalEntryScreenState extends State<JournalEntryScreen> {
                   try {
                     String journalEntry = _journalController.text;
                     String response = await _analyzeSentiments(journalEntry);
-                    double emotionScore= mapSentimentValueToScore(response);
+                    double emotionScore= score(response);
                     setState(() {
                       _emotionScore=response;
                     });
