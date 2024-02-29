@@ -20,7 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
   List<ChatMessage> messages = <ChatMessage>[];
   final List<ChatUser> _typing = <ChatUser>[];
 
-  getdata(ChatMessage m) async {
+  Future<void> getdata(ChatMessage m) async {
     _typing.add(bot);
     messages.insert(0, m);
     setState(() {});
@@ -44,12 +44,12 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       body: Container(
-        color: Colors.white, // Set background color to white
+        color: Colors.white,
         child: DashChat(
           typingUsers: _typing,
           currentUser: myself,
           onSend: (ChatMessage m) async {
-            getdata(m);
+            await getdata(m);
           },
           messages: messages,
           inputOptions: const InputOptions(
@@ -67,67 +67,91 @@ class _ChatScreenState extends State<ChatScreen> {
   Future<void> generateGeminiResponse(String userInput) async {
     final requestPayload = {
       "contents": [
-        {
-          "role": "user",
-          "parts": [
-            {"text": userInput}
-          ]
-        },
+        {"role": "user", "parts": [{"text": userInput}]}
       ],
       "generationConfig": {
         "temperature": 0,
         "topK": 1,
         "topP": 1,
-        "maxOutputTokens": 2048,
+        "maxOutputTokens": 1024,
         "stopSequences": [],
       },
       "safetySettings": [
         {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        {
-          "category": "HARM_CATEGORY_HATE_SPEECH",
-          "threshold": "BLOCK_LOW_AND_ABOVE"
-        },
-        {
-          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          "threshold": "BLOCK_LOW_AND_ABOVE"
-        },
-        {
-          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-          "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-        },
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_LOW_AND_ABOVE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_LOW_AND_ABOVE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
       ],
     };
 
     try {
-      final response = await http.post(
-        Uri.parse(geminiEndpoint),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(requestPayload),
-      );
-
-      if (response.statusCode == 200) {
-        final geminiResponse = extractDesiredResponse(response.body);
-        ChatMessage geminiMessage = ChatMessage(
-          text: geminiResponse,
-          user: bot,
-          createdAt: DateTime.now(),
+      if (await istherapy(userInput)) {
+        final response = await http.post(
+          Uri.parse(geminiEndpoint),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode(requestPayload),
         );
 
-        messages.insert(0, geminiMessage);
-        setState(() {});
+        if (response.statusCode == 200) {
+          final geminiResponse = extractDesiredResponse(response.body);
+          ChatMessage geminiMessage = ChatMessage(
+            text: geminiResponse,
+            user: bot,
+            createdAt: DateTime.now(),
+          );
+
+          messages.insert(0, geminiMessage);
+          setState(() {});
+        } else {
+          print("Gemini API request failed with status code ${response.statusCode}");
+        }
       } else {
-        print(
-            "Gemini API request failed with status code ${response.statusCode}");
+        // Handle non-therapy related input (e.g., display a message)
+        print("Sorry, I can only answer therapy-related questions.");
       }
     } catch (e) {
       print("Error sending Gemini API request: $e");
     }
   }
 
+  Future<bool> istherapy(String geminiResponse) async {
+    const String apiKeys = 'AIzaSyDT8KFmc5QHXNdbHIpvQjzNlY_G1zs64MU';
+    const String apiUrl = 'https://language.googleapis.com/v1/documents:analyzeEntitySentiment?key=$apiKeys';
+    final Map<String, dynamic> requestBody = {
+      'document': {
+        'type': 'PLAIN_TEXT',
+        'content': geminiResponse,
+      },
+    };
+
+    try {
+      final http.Response response = await http.post(
+        Uri.parse(apiUrl),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(requestBody),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseJson = json.decode(response.body);
+        print("Ok here goes:");
+        print(responseJson);
+        return true;
+      } else {
+        print("Error: ${response.body}");
+      }
+    } catch (e) {
+      print("Error: $e");
+    }
+
+    return false;
+  }
+
   String extractDesiredResponse(String geminiResponse) {
     try {
       Map<String, dynamic> jsonResponse = jsonDecode(geminiResponse);
-
+      print(geminiResponse);
       if (jsonResponse.containsKey('candidates')) {
         List<dynamic> candidates = jsonResponse['candidates'];
 

@@ -24,13 +24,7 @@ class FrontView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '$monthIndex',
-              textScaleFactor: 3.5,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            ),
+            
             Text(
               months[monthIndex]!.keys.toList()[0],
               textScaleFactor: 2.5,
@@ -46,32 +40,28 @@ class FrontView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '5/${months[monthIndex]!.values.toList()[0]}',
+                        '${months[monthIndex]!.values.toList()[0]}',
                         style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 3.0),
-                      Container(
-                        width: double.infinity,
-                        height: 3.0,
-                        color: Colors.white30,
-                        child: FractionallySizedBox(
-                          alignment: Alignment.centerLeft,
-                          widthFactor: 5 / 31,
-                          child: Container(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   width: double.infinity,
+                      //   height: 3.0,
+                      //   color: Colors.white30,
+                      //   child: FractionallySizedBox(
+                      //     alignment: Alignment.centerLeft,
+                      //     widthFactor: 5 / 31,
+                      //     child: Container(
+                      //       color: Colors.white,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
-                const Icon(
-                  Icons.more_vert_rounded,
-                  color: Colors.white,
-                  size: 30.0,
-                )
+                
               ],
             ),
           ],

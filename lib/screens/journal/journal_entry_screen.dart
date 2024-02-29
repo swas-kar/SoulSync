@@ -121,7 +121,7 @@ String getScoreTag(double score) {
     return 'The entry made is very positive.';
   }
   else if (score <= -0.25 && score >=-.5) {
-    return 'NEGATIVE';
+    return 'The entry is mostly negative.';
   } 
   else if(score < -0.5){
     return 'The entry made is very negative.';

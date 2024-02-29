@@ -25,24 +25,25 @@ class LoginPage extends StatelessWidget {
           bool isLoggedIn = snapshot.data ?? false;
 
           if (isLoggedIn) {
-            return const HomePage(); // Navigate to Home Page if already logged in
+            return const HomePage(); 
           }
 
           return Scaffold(
+            resizeToAvoidBottomInset: false, 
             backgroundColor: Colors.white,
             body: SafeArea(
-              child: Center(
-                child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 25),
                       Image.asset(
                         'lib/assets/soulypic.jpeg',
-                        width: 200,
-                        height: 200,
+                        width: 150,
+                        height: 150,
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 30),
                       Text(
                         'Welcome back we missed you <3 ',
                         style: TextStyle(
@@ -107,7 +108,7 @@ class LoginPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -117,7 +118,7 @@ class LoginPage extends StatelessWidget {
                             child:
                                 const SquareTile(imagePath: 'lib/assets/google.jpeg'),
                           ),
-                          const SizedBox(width: 25),
+                          const SizedBox(width: 20),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -149,19 +150,18 @@ class LoginPage extends StatelessWidget {
             ),
           );
         } else {
-          return const CircularProgressIndicator(); // Loading indicator while checking login status
+          return const CircularProgressIndicator(); 
         }
       },
     );
   }
 
-  // Save login status in SharedPreferences
+  
   Future<void> saveLoginStatus(bool isLoggedIn) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', isLoggedIn);
   }
 
-  // Check login status on app startup
   Future<bool> checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool('isLoggedIn') ?? false;
@@ -176,7 +176,6 @@ class LoginPage extends StatelessWidget {
       );
 
       if (_authMethods.user != null) {
-        // Save login status in SharedPreferences
         saveLoginStatus(true);
 
         Navigator.pushReplacement(
@@ -195,7 +194,6 @@ class LoginPage extends StatelessWidget {
 
   void skipSignIn(BuildContext context) async {
     await _authMethods.signInAnonymously(context);
-    // Save login status in SharedPreferences
     saveLoginStatus(true);
 
     Navigator.pushReplacement(
